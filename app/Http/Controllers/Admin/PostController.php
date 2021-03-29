@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\User\post;
+use App\Models\user\post;
 class PostController extends Controller
 {
     /**
@@ -36,11 +36,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->all();
         $this->validate($request , [
             'title' => 'required',
             'subtitle' => 'required',
             'slug'=> 'required',
-            //'body' => 'required',
+            'body' => 'required',
             ]);
 
         $post = new post;
