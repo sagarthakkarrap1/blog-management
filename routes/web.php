@@ -13,23 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('user/home');
-});
+Route::get('admin/home','App\Http\Controllers\Admin\HomeController@index');
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::resource('admin/post','App\Http\Controllers\Admin\PostController');
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::resource('admin/user','App\Http\Controllers\Admin\UserController');
 
-Route::get('/post', function () {
-    return view('user/post');
-})->name('post');
+Route::resource('admin/tag','App\Http\Controllers\Admin\TagController');
 
-Route::get('admin/home', function () {
-    return view('admin.home');
-});
+Route::resource('admin/category','App\Http\Controllers\Admin\CategoryController');
+
+Route::get('/about','App\Http\Controllers\User\AboutController@index');
+
+Route::get('/','App\Http\Controllers\User\HomeController@index');
+
+Route::get('/contact','App\Http\Controllers\User\ContactController@index');
+
+Route::get('/post','App\Http\Controllers\User\PostController@index')->name('post');
 
