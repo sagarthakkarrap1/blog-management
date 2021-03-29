@@ -31,15 +31,7 @@
           <div class="card-header">
             <h3 class="card-title">Titles</h3>
           </div>
-          @if(count($errors)>0)
-
-          @foreach($errors->all() as $error)
-
-          <p class="alert alert-danger">{{ $error }} </a>
-
-            @endforeach
-
-            @endif
+          @include('includes/messages')
 
             <!-- /.card-header -->
             <!-- form start -->
@@ -92,6 +84,7 @@
         <!-- /.col-->
           <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{route('post.index')}}"  class="btn btn-warning">Back</a>
           </div>
         </form>
       </div>

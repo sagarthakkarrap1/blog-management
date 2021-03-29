@@ -27,19 +27,21 @@
               <div class="card-header">
                 <h3 class="card-title">Titles</h3>
               </div>
+              @include('includes/messages')
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form action="{{ route('tag.store') }}" method="post">
+                  {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
                     <label for="tag">Post Tag</label>
-                    <input type="text" class="form-control" id="tag" name="tag" placeholder="Enter Tag">
+                    <input type="text" class="form-control" id="tag" name="name" placeholder="Enter Tag">
                   </div>
 
 
                   <div class="form-group">
                     <label for="tag_slug">Post Slug</label>
-                    <input type="text" class="form-control" id="tag_slug" name="tag_slug" placeholder="Enter Slug">
+                    <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter Slug">
                   </div>
 
                 </div>
@@ -48,6 +50,7 @@
 
                  <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
+                  <a href="{{route('tag.index')}}"  class="btn btn-warning">Back</a>
                 </div>
               </form>
             </div>
