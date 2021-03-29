@@ -68,8 +68,10 @@
                     <td>{{$loop->index+1}}</td>
                     <td>{{$category->name}}</td>
                     <td>{{$category->name}}</td>
-                    <td>Edit</td>
-                    <td>Delete</td>
+                    <form action="" method="post"> {{ csrf_field() }}
+                    <td><input type="submit" value="Edit"></td>
+                    <td><input type="submit" value="Delete"></td>
+                    </form>
                   </tr>
                   @endforeach
                   
