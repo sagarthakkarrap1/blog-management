@@ -15,7 +15,20 @@
             <a class="nav-link" href="about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="post">Sample Post</a>
+              
+                @if (Auth::guest())
+                            <a href="{{ route('login') }}">Login</a>
+                        @else
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        @endif
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contact">Contact</a>

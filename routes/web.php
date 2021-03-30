@@ -31,3 +31,11 @@ Route::get('/contact','App\Http\Controllers\User\ContactController@index');
 
 Route::get('post/{post}','App\Http\Controllers\User\PostController@post')->name('post');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
