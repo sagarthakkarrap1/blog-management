@@ -74,6 +74,11 @@
                           style="width: 100%;" name="tags[]">
                           <@foreach($tags as $tag)
                             <option value="{{$tag->id}}">{{$tag->name}}</option>
+                              @foreach($post->tags as $postTag)
+                                @if($postTag->id == $tag->id)
+                                  selected
+                                @endif
+                              @endforeach
                           @endforeach
                   </select>
                 </div>
@@ -83,6 +88,11 @@
                           style="width: 100%;" name="categories[]">
                           @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
+                              @foreach($post->categories as $postCategory)
+                                @if($postCategory->id == $category->id)
+                                  selected
+                                @endif
+                              @endforeach
                           @endforeach
                   </select>
                 </div>

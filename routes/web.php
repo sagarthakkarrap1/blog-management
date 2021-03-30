@@ -29,5 +29,5 @@ Route::get('/','App\Http\Controllers\User\HomeController@index');
 
 Route::get('/contact','App\Http\Controllers\User\ContactController@index');
 
-Route::get('/post','App\Http\Controllers\User\PostController@index')->name('post');
+Route::get('post/{post}','App\Http\Controllers\User\PostController@post')->name('post');
 

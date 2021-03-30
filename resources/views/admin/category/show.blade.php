@@ -56,8 +56,18 @@
                   <thead>
                   <tr>
                     <th>Sr.No.</th>
-                    <th>Tag Name</th>
+                    <th>Category Name</th>
                     <th>Slug</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                   @foreach ($categories as $category)
+                   <tr>
+                    <td>{{$loop->index+1}}</td>
+                    <td>{{$category->name}}</td>
+                    <td>{{$category->slug}}</td>
                     <td><a href="{{ route('category.edit',$category->id) }}">Edit</a></td>
                     <form id="delete-form-{{$category->id}}" method="post" action="{{ route('category.destroy',$category->id) }}"  sytle="display:none"> 
                     {{ csrf_field() }}
@@ -73,18 +83,6 @@
                       event.preventDefault();
                     }
                     ">Delete</a></td>
-                  </tr>
-                  </thead>
-                  <tbody>
-                   @foreach ($categories as $category)
-                   <tr>
-                    <td>{{$loop->index+1}}</td>
-                    <td>{{$category->name}}</td>
-                    <td>{{$category->name}}</td>
-                    <form action="" method="post"> {{ csrf_field() }}
-                    <td><input type="submit" value="Edit"></td>
-                    <td><input type="submit" value="Delete"></td>
-                    </form>
                   </tr>
                   @endforeach
                   
