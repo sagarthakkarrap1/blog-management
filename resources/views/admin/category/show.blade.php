@@ -58,8 +58,21 @@
                     <th>Sr.No.</th>
                     <th>Tag Name</th>
                     <th>Slug</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <td><a href="{{ route('category.edit',$category->id) }}">Edit</a></td>
+                    <form id="delete-form-{{$category->id}}" method="post" action="{{ route('category.destroy',$category->id) }}"  sytle="display:none"> 
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE')}}
+                    </form>
+                    <td><a href="" onclick="
+                    if(confirm('Are you sure, You Want to delete this? '))
+                    {
+                      event.preventDefault();document.getElementById('delete-form-{{$category->id}}').submit();
+                    }
+                    else
+                    {
+                      event.preventDefault();
+                    }
+                    ">Delete</a></td>
                   </tr>
                   </thead>
                   <tbody>
