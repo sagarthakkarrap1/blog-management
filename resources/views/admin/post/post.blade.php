@@ -1,5 +1,10 @@
 @extends('admin.layouts.app')
 
+@section('head-section')
+  <link rel="stylesheet" href="{{asset('admin/plugins/select2/css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+@endsection
+
 @section('main-content')
 
 <!-- Content Wrapper. Contains page content -->
@@ -61,10 +66,29 @@
                   
                 </div>
               </div><br>
+              <div class="form-group">
+                  <label>Tags</label>
+                  <select class="select2bs4" multiple="multiple" data-placeholder="Select Tags"
+                          style="width: 100%;" name="tags[]">
+                          <@foreach($tags as $tag)
+                            <option value="{{$tag->id}}">{{$tag->name}}</option>
+                          @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Categories</label>
+                  <select class="select2bs4" multiple="multiple" data-placeholder="Select Categories"
+                          style="width: 100%;" name="categories[]">
+                          @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                          @endforeach
+                  </select>
+                </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1" name="status">Publsih</label>
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"  name="status" value="1">
+                <label class="form-check-label" for="exampleCheck1" name="status" >Publsih</label>
               </div><br>
+              
               <!-- /.card-body -->
               <!-- /.card -->
               <div class="card card-outline card-info">
@@ -121,5 +145,17 @@
       theme: "monokai"
     });
   })
+</script>
+@endsection
+@section('footer-section')
+<script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
+<script>
+$(function(){
+  $('.select2').select2();
+
+  $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    });
+});
 </script>
 @endsection

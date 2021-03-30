@@ -9,6 +9,6 @@ class tag extends Model
 {
     public function posts()
     {
-        return $this->belongsToMany('App\Model\user\post','post_tags');
+        return $this->belongsToMany('App\Models\user\post','post_tags');
     }
 }
