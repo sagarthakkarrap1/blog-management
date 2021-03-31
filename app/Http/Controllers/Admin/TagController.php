@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\user\tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -15,6 +16,9 @@ class TagController extends Controller
      */
     public function index()
     {
+        // $user_id = auth()->user()->id;
+        // $user = User::find($user_id);
+        // $tags=$user->tags;
         $tags=tag::all();
         return view('admin.tag.show',compact('tags'));
     }
@@ -46,6 +50,7 @@ class TagController extends Controller
         $tag = new tag;
         $tag->name = $request->name;
         $tag->slug = $request->slug;
+        $tag->user_id = auth()->user()->id;
         $tag->save();
         return redirect(route('tag.index'));
 

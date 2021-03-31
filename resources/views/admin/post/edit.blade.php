@@ -135,7 +135,9 @@
 </div>
 <!-- /.content -->
 
+@endsection
 
+@section('footer-section')
 <!-- /.content-wrapper -->
 <script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
@@ -164,8 +166,6 @@
     });
   })
 </script>
-@endsection
-@section('footer-section')
 <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
 <script>
 $(function(){

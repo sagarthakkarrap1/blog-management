@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\user\post;
 use App\Models\user\tag;
+use App\Models\User;
 use App\Models\user\category;
 class PostController extends Controller
 {
@@ -17,7 +18,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts=post::all();
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        $posts=$user->posts;
         return view('admin.post.show',compact('posts'));
     }
 
@@ -54,6 +57,7 @@ class PostController extends Controller
         $post->subtitle = $request->subtitle;
         $post->slug = $request->slug;
         $post->body = $request->body;
+        $post->user_id = auth()->user()->id;
         $post->status = $request->status;
         $post->save();
         $post->tags()->sync($request->tags);

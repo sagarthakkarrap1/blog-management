@@ -25,13 +25,13 @@
           
             <br>
         <small>
-          <h3>Tag Cloudes</h3>
           @foreach ($post->tags as $tag)
           <small style="margin-right:20px;">
             {{$tag->name}}
           </small>
           @endforeach
         </small>
+        <br>Posted by<h3>{{$post->user->name}}</h3>
         </div>
       </div>
     </div>

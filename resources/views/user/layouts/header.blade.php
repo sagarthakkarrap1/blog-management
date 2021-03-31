@@ -1,37 +1,42 @@
  <!-- Navigation -->
  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+      <a class="navbar-brand" href="#">Start Blogging</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
+          </li> -->
+          <li class="nav-item">
+            @if (Auth::guest())
+              <a class="nav-link" href="/">Home</a>
+            @else
+            <a class="nav-link" href="{{route('admin_home')}}">My Dashboard</a>
+            @endif
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact">Contact</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="about">About</a>
           </li>
           <li class="nav-item">
-              
                 @if (Auth::guest())
                             <a href="{{ route('login') }}">Login</a>
-                        @else
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        @endif
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact">Contact</a>
+                @else
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                @endif
           </li>
         </ul>
       </div>

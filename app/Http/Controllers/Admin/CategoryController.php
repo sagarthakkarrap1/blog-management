@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\user\category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,6 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        // $user_id = auth()->user()->id;
+        // $user = User::find($user_id);
+        // $categories=$user->categories;
         $categories=category::all();
         return view('admin.category.show',compact('categories'));
     }
@@ -46,6 +50,7 @@ class CategoryController extends Controller
         $category = new category;
         $category->name = $request->name;
         $category->slug = $request->slug;
+        $category->user_id = auth()->user()->id;
         $category->save();
         return redirect(route('category.index'));
     }

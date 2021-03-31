@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('admin/home','App\Http\Controllers\Admin\HomeController@index');
+Route::get('admin/home','App\Http\Controllers\Admin\HomeController@index')->name('admin_home');
 
 Route::resource('admin/post','App\Http\Controllers\Admin\PostController');
 
@@ -25,7 +25,7 @@ Route::resource('admin/category','App\Http\Controllers\Admin\CategoryController'
 
 Route::get('/about','App\Http\Controllers\User\AboutController@index');
 
-Route::get('/','App\Http\Controllers\User\HomeController@index');
+Route::get('/','App\Http\Controllers\User\HomeController@index')->name('guestuser');
 
 Route::get('/contact','App\Http\Controllers\User\ContactController@index');
 

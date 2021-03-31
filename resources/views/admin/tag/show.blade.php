@@ -14,14 +14,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Blank Page</h1>
+            <h1>Tags</h1>
           </div>
-          <div class="col-sm-6">
+          <!-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
             </ol>
-          </div>
+          </div> -->
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -32,75 +31,70 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Tags</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a class='btn btn-success' href="{{route('tag.create')}}">Add New</a>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
             </button>
-            <!-- <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button> -->
+           
           </div>
         </div>
         <div class="card-body">
         <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
-              </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
+                @if(count($tags)>0)
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                      <th>Sr.No.</th>
+                      <th>Tag Name</th>
+                      <th>Slug</th>
+                      <!-- <th>Edit</th>
+                      <th>Delete</th> -->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($tags as $tag)
+                    <tr>
+                      <td>{{$loop->index+1}}</td>
+                      <td>{{$tag->name}}</td>
+                      <td>{{$tag->slug}}</td>
+                      <!-- <td><a href="{{ route('tag.edit',$tag->id) }}">Edit</a></td>
+                      <form id="delete-form-{{$tag->id}}" method="post" action="{{ route('tag.destroy',$tag->id) }}"  sytle="display:none"> 
+                      {{ csrf_field() }}
+                      {{ method_field('DELETE')}}
+                      </form>
+                      <td><a href="" onclick="
+                      if(confirm('Are you sure, You Want to delete this? '))
+                      {
+                        event.preventDefault();document.getElementById('delete-form-{{$tag->id}}').submit();
+                      }
+                      else
+                      {
+                        event.preventDefault();
+                      }
+                      ">Delete</a></td> -->
+                    </tr>
+                    @endforeach
+                    
+                    </tbody>
+                    <tfoot>
                     <th>Sr.No.</th>
-                    <th>Tag Name</th>
-                    <th>Slug</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                   @foreach ($tags as $tag)
-                   <tr>
-                    <td>{{$loop->index+1}}</td>
-                    <td>{{$tag->name}}</td>
-                    <td>{{$tag->slug}}</td>
-                    <td><a href="{{ route('tag.edit',$tag->id) }}">Edit</a></td>
-                    <form id="delete-form-{{$tag->id}}" method="post" action="{{ route('tag.destroy',$tag->id) }}"  sytle="display:none"> 
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE')}}
-                    </form>
-                    <td><a href="" onclick="
-                    if(confirm('Are you sure, You Want to delete this? '))
-                    {
-                      event.preventDefault();document.getElementById('delete-form-{{$tag->id}}').submit();
-                    }
-                    else
-                    {
-                      event.preventDefault();
-                    }
-                    ">Delete</a></td>
-                  </tr>
-                  @endforeach
-                  
-                  </tbody>
-                  <tfoot>
-                  <th>Sr.No.</th>
-                    <th>Tag Name</th>
-                    <th>Slug</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tfoot>
-                </table>
+                      <th>Tag Name</th>
+                      <th>Slug</th>
+                      <!-- <th>Edit</th>
+                      <th>Delete</th> -->
+                    </tfoot>
+                  </table>
+                @else
+                      <h3>No tag, yet!!</h3>
+                @endif
               </div>
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-          Footer
-        </div>
-        <!-- /.card-footer-->
+       
       </div>
       <!-- /.card -->
 

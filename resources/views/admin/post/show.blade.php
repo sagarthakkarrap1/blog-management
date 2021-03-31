@@ -15,13 +15,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Blank Page</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
-            </ol>
+            <h1>Posts</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -33,81 +27,81 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Posts</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a class='btn btn-success' href="{{route('post.create')}}">Add New</a>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
           </div>
         </div>
         <div class="card-body">
         <div class="card">
-              <div class="card-header">
+              <!-- <div class="card-header">
                 <h3 class="card-title">DataTable with default features</h3>
-              </div>
+              </div> -->
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Sr.No.</th>
-                    <th>Title</th>
-                    <th>Sub-Title</th>
-                    <th>Slug</th>
-                    <th>Created At</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                   @foreach ($posts as $post)
-                   <tr>
-                    <td>{{$loop->index+1}}</td>
-                    <td>{{$post->title}}</td>
-                    <td>{{$post->subtitle}}</td>
-                    <td>{{$post->slug}}</td>
-                    <td>{{$post->created_at}}</td>
-                    <td><a href="{{ route('post.edit',$post->id) }}">Edit</a></td>
-                    <form id="delete-form-{{$post->id}}" method="post" action="{{ route('post.destroy',$post->id) }}"  sytle="display:none"> 
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE')}}
-                    </form>
-                    <td><a href="" onclick="
-                    if(confirm('Are you sure, You Want to delete this? '))
-                    {
-                      event.preventDefault();document.getElementById('delete-form-{{$post->id}}').submit();
-                    }
-                    else
-                    {
-                      event.preventDefault();
-                    }
-                    ">Delete</a></td>
+                @if(count($posts)>0)
+                    <table id="example1" class="table table-bordered table-striped">
+                      <thead>
+                      <tr>
+                        <th>Sr.No.</th>
+                        <th>Title</th>
+                        <th>Sub-Title</th>
+                        <th>Slug</th>
+                        <th>Created At</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      @foreach ($posts as $post)
+                      <tr>
+                        <td>{{$loop->index+1}}</td>
+                        <td>{{$post->title}}</td>
+                        <td>{{$post->subtitle}}</td>
+                        <td>{{$post->slug}}</td>
+                        <td>{{$post->created_at}}</td>
+                        <td><a href="{{ route('post.edit',$post->id) }}">Edit</a></td>
+                        <form id="delete-form-{{$post->id}}" method="post" action="{{ route('post.destroy',$post->id) }}"  sytle="display:none"> 
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE')}}
+                        </form>
+                        <td><a href="" onclick="
+                        if(confirm('Are you sure, You Want to delete this? '))
+                        {
+                          event.preventDefault();document.getElementById('delete-form-{{$post->id}}').submit();
+                        }
+                        else
+                        {
+                          event.preventDefault();
+                        }
+                        ">Delete</a></td>
 
-                  </tr>
-                  @endforeach
-                  
-                  </tbody>
-                  <tfoot>
-                  <th>Sr.No.</th>
-                    <th>Title</th>
-                    <th>Sub-Title</th>
-                    <th>Slug</th>
-                    <th>Created At</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tfoot>
-                </table>
+                      </tr>
+                      @endforeach
+                      
+                      </tbody>
+                      <tfoot>
+                      <th>Sr.No.</th>
+                        <th>Title</th>
+                        <th>Sub-Title</th>
+                        <th>Slug</th>
+                        <th>Created At</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tfoot>
+                    </table>
+                @else
+                      <h3>No posts, yet!!</h3>
+                @endif
               </div>
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
+        <!-- <div class="card-footer">
           Footer
-        </div>
+        </div> -->
         <!-- /.card-footer-->
       </div>
       <!-- /.card -->
