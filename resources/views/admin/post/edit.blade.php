@@ -15,13 +15,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Text Editors</h1>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Text Editors</li>
-          </ol>
+          <h1>Post Editor</h1>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -41,7 +35,7 @@
 
             <!-- /.card-header -->
             <!-- form start -->
-          <form action="{{ route('post.update',$post->id) }}" method="post">
+          <form action="{{ route('post.update',$post->id) }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
             <div class="card-body">
@@ -65,7 +59,7 @@
                 <!-- <div class="input-group">-->
                 <div class="custom-file">
                 <label for="image">Choose file</label><br>
-                <input type="file" id="image" name="image">
+                <input type="file" id="image" name="image" value=" {{ $post->image }} ">
                   
                 </div>
               </div><br>
@@ -73,14 +67,15 @@
                   <label>Tags</label>
                   <select class="select2bs4" multiple="multiple" data-placeholder="Select Tags"
                           style="width: 100%;" name="tags[]">
-                          <@foreach($tags as $tag)
-                            <option value="{{$tag->id}}">{{$tag->name}}</option>
-                              @foreach($post->tags as $postTag)
-                                @if($postTag->id == $tag->id)
-                                  selected
-                                @endif
-                              @endforeach
-                          @endforeach
+                          @foreach ($tags as $tag)
+                    <option value="{{ $tag->id }}"
+                      @foreach ($post->tags as $postTag)
+                        @if ($postTag->id == $tag->id)
+                          selected
+                        @endif
+                      @endforeach
+                    >{{ $tag->name }}</option>
+                    @endforeach
                   </select>
                 </div>
                 <div class="form-group">
