@@ -23,11 +23,11 @@ Route::resource('admin/tag','App\Http\Controllers\Admin\TagController');
 
 Route::resource('admin/category','App\Http\Controllers\Admin\CategoryController');
 
-Route::get('/about','App\Http\Controllers\User\AboutController@index');
+Route::get('/about','App\Http\Controllers\User\AboutController@index')->name('about');
 
 Route::get('/','App\Http\Controllers\User\HomeController@index')->name('guestuser');
 
-Route::get('/contact','App\Http\Controllers\User\ContactController@index');
+Route::get('/contact','App\Http\Controllers\User\ContactController@index')->name('contact');
 
 Route::get('post/{post}','App\Http\Controllers\User\PostController@post')->name('post');
 

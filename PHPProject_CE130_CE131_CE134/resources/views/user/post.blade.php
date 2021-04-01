@@ -33,7 +33,13 @@
         </small>
         <br>Posted by<h3>{{$post->user->name}}</h3>
         </div>
+        <br><br>
+        
+           
+           
+        
       </div>
+      <a href="{{route('guestuser')}}"  class="btn btn-warning">Back</a>
     </div>
   </article>
 
