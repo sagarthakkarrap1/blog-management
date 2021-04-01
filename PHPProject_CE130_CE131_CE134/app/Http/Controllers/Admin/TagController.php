@@ -50,7 +50,7 @@ class TagController extends Controller
         $tag = new tag;
         $tag->name = $request->name;
         $tag->slug = $request->slug;
-        $tag->user_id = auth()->user()->id;
+        // $tag->user_id = auth()->user()->id;
         $tag->save();
         return redirect(route('tag.index'));
 

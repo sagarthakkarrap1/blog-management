@@ -50,7 +50,7 @@ class CategoryController extends Controller
         $category = new category;
         $category->name = $request->name;
         $category->slug = $request->slug;
-        $category->user_id = auth()->user()->id;
+        // $category->user_id = auth()->user()->id;
         $category->save();
         return redirect(route('category.index'));
     }
